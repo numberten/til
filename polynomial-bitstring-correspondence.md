@@ -69,10 +69,11 @@ algorithms for factoring polynomials over finite fields. Nifty!
 <sub>(probably maybe?)</sub>
 
 <br>
-<sup>[1]</sup> This procedure also follows clearly from the premise that multiplication
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by x corresponds to a single left shift. Unfortunately addition and
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;multiplication make for far more compelling elemental operations
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;than addition and multiplication by x.
+<sup>[1]</sup> This procedure also follows clearly from the premise that
+multiplication by x corresponds to a single left shift. Unfortunately
+addition and multiplication make for far more compelling elementary
+operations than addition and multiplication by x, thus the examples above.
+
 ### References
  - http://www.doc.ic.ac.uk/~mrh/330tutor/ch04s04.html
  - https://en.wikipedia.org/wiki/Factorization_of_polynomials_over_finite_fields
