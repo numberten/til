@@ -15,32 +15,39 @@ structures. For example:
 
 ##### Addition
 
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x<sup>3</sup> + x + 1
-> \+ &nbsp;&nbsp;&nbsp; x<sup>3</sup> + x<sup>2</sup> + x
->&nbsp;----------------------
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x<sup>2</sup> + 1
+```
+   x^3 + x + 1
++  x^3 + x^2 + x
+----------------------
+      x^2 + 1
+```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇔
 
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1011
-> ⊕&nbsp;&nbsp;&nbsp;&nbsp;1110
->&nbsp;-------------
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0101
-
+```
+   1011
+⊕  1110
+--------
+   0101
+```
 ##### Multiplication
 
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x<sup>4</sup> + x<sup>2</sup> + x
-> ×&nbsp;&nbsp;&nbsp;&nbsp;x<sup>2</sup> + 1
->&nbsp;-----------------------
->&nbsp;&nbsp;x<sup>6</sup> + x<sup>3</sup> + x<sup>2</sup> + x
+```
+        x^4 + x^2 + x
+×             x^2 + 1
+-----------------------
+   x^6 + x^3 + x^2 + x
+```
 
-⇔
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇔
 
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1010
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10100
-> × &nbsp;&nbsp;0000101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⊕&nbsp;&nbsp;1010000
-> ------------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------------
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1001110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1001110
+```
+                                     1010
+   0010110                          10100
+×  0000101                    ⊕   1010000
+-----------        =        ---------------
+   1001110                        1001110
+```
 
 
   Specifically the above procedure × (not to be confused with normal
@@ -61,7 +68,8 @@ on bitstrings described above, we can reuse the plethora of PTIME
 algorithms for factoring polynomials over finite fields. Nifty!
 <sub>(probably maybe?)</sub>
 
-[1] This procedure also follows clearly from the premise that multiplication
+<br>
+<sup>[1]</sup> This procedure also follows clearly from the premise that multiplication
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by x corresponds to a single left shift. Unfortunately addition and
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;multiplication make for far more compelling elemental operations
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;than addition and multiplication by x.
