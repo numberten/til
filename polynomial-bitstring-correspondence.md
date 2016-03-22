@@ -1,0 +1,70 @@
+# Polynomial Bitstring Correspondence
+
+I only just realized the relationship between polynomials mod 2 and
+bitstrings. It's rather obvious after thinking about it, but I hadn't
+realized until recently and found it rather interesting.
+
+Specifically I refer to the ability to view bitstrings of length m as
+polynomials mod 2 of degree n (where n < m). Each bit in the bitstring
+corresponds to the equivalent coefficient of the polynomial.
+> e.g. 1011 = 1*x<sup>3</sup> + 0*x<sup>2</sup> + 1*x<sup>1</sup> + 1*x<sup>0</sup> = x<sup>3</sup> + x + 1
+
+This relationship between literals would be fairly uninteresting if
+not for a correspondence between fundamental operations on both
+structures. For example:
+
+##### Addition
+
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x<sup>3</sup> + x + 1
+> \+ &nbsp;&nbsp;&nbsp; x<sup>3</sup> + x<sup>2</sup> + x
+>&nbsp;----------------------
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x<sup>2</sup> + 1
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇔
+
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1011
+> ⊕&nbsp;&nbsp;&nbsp;&nbsp;1110
+>&nbsp;-------------
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0101
+
+##### Multiplication
+
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x<sup>4</sup> + x<sup>2</sup> + x
+> ×&nbsp;&nbsp;&nbsp;&nbsp;x<sup>2</sup> + 1
+>&nbsp;-----------------------
+>&nbsp;&nbsp;x<sup>6</sup> + x<sup>3</sup> + x<sup>2</sup> + x
+
+⇔
+
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1010
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10100
+> × &nbsp;&nbsp;0000101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⊕&nbsp;&nbsp;1010000
+> ------------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------------
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1001110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1001110
+
+
+  Specifically the above procedure × (not to be confused with normal
+  binary multiplication) xors/adds the second argument (i.e. 101)
+  with itself once for every on bit in the first argument
+  (i.e. 10110), where each copy of argument #2 is left shifted by
+  the index of the corresponding on bit from argument #1.
+
+  While the above procedure for 'multiplying' bitstrings is hardly a
+  fundamental operation in itself, it is clearly the composition of
+  more fundamental operations, concretely xor and leftshift<sup>[1]</sup>.
+
+
+Besides just being generally cool, this correspondence (like most)
+gives us the ability to solve problems in one domain with solutions
+from the other. For example, to reverse the 'multiplication' procedure
+on bitstrings described above, we can reuse the plethora of PTIME
+algorithms for factoring polynomials over finite fields. Nifty!
+<sub>(probably maybe?)</sub>
+
+[1] This procedure also follows clearly from the premise that multiplication
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by x corresponds to a single left shift. Unfortunately addition and
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;multiplication make for far more compelling elemental operations
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;than addition and multiplication by x.
+### References
+ - http://www.doc.ic.ac.uk/~mrh/330tutor/ch04s04.html
+ - https://en.wikipedia.org/wiki/Factorization_of_polynomials_over_finite_fields
